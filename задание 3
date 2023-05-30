@@ -1,0 +1,17 @@
+с = {}
+
+with open("en-ru.txt","r") as file:
+    for line in file:
+        en_w = line.split("-")[0].strip()
+        ru_ws = line.split("-")[1].strip().split(',')
+        for i in ru_ws:
+            i = i.strip()
+            if i in с.keys():
+                с[i] = с[i] + ", " + en_w
+            else:
+                с[i] = en_w
+
+with open("ru-en.txt", "w") as file:
+    for i in sorted(с.keys()):
+        file.writelines(f"{i} - {с[i]}\n")
+
