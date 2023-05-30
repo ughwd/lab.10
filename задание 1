@@ -1,0 +1,10 @@
+import json
+
+with open("1.json","r") as file:
+    data = json.load(file)
+
+for i in data["products"]:
+    print("название: ", i["name"])
+    print("цена: ", i["price"])
+    print("вес: ", i["weight"])
+    print("в наличии" if i["available"] else "нет в наличии!","\n")
